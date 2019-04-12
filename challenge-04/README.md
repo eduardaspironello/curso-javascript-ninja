@@ -29,6 +29,7 @@ isTruthy (true)//true
 isTruthy (10)//true
 isTruthy ([])
 isTruthy ({})
+isTruthy ( function () {})
 
 /*
 Declare uma variável chamada `carro`, atribuindo à ela um objeto com as
@@ -42,7 +43,16 @@ seguintes propriedades (os valores devem ser do tipo mostrado abaixo):
 - `assentos` - Number - cinco por padrão
 - `quantidadePessoas` - Number - zero por padrão
 */
-var carro = {marca: 'Fiat', modelo: 'Strada', placa: 'MFX0261', ano: 2007, cor: 'prata', quantasPortas: 2, assentos: 5, quantidadePessoas: 0};
+var carro = {
+	marca: 'Fiat',
+	modelo: 'Strada',
+	placa: 'MFX0261',
+	ano: 2007,
+	cor: 'prata',
+	quantasPortas: 2,
+	assentos: 5,
+	quantidadePessoas: 0
+};
 
 /*
 Crie um método chamado `mudarCor` que mude a cor do carro conforme a cor
@@ -104,7 +114,7 @@ carro.adicionarPessoas = function (x) {
 	var palavraPessoa = novaQuantidade ===1 ? ' pessoa' : ' pessoas';
 	var vagasDisponiveis = capacidadeMax - carro.quantidadePessoas;
 
-	if (carro.quantidadePessoas >= capacidadeMax) {
+	if (carro.quantidadePessoas >= capacidadeMax && x >= capacidadeMax) {
 		return 'O carro já esta lotado';
 	}
 
@@ -152,7 +162,7 @@ carro.adicionarPessoas (4) //'Só cabem mais 3 pessoas'
 carro.adicionarPessoas (3) // 'Já temos 5 pessoas'
 
 // Tire 4 pessoas do carro.
-carro.quantidadePessoas = 1
+carro.quantidadePessoas = 1 // Ou carro.quantidade (-4)
 
 // Adicione 10 pessoas no carro.
 carro.adicionarPessoas (10) // "só cabem mais 4 pessoas"
