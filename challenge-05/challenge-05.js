@@ -22,18 +22,24 @@ segundo, um número. A função deve retornar o valor de um índice do array que
 no primeiro parâmetro. O índice usado para retornar o valor, deve ser o número passado no
 segundo parâmetro.
 */
-// ?
+function myFunction2 (arr, index) {
+  return arr [index];
+}
 
 /*
 Declare uma variável que recebe um array com 5 valores, de tipos diferentes.
 */
-// ?
+var myArray = ['ninja', 52.4, true, [1,2,'duda'], {b:3}];
 
 /*
 Invoque a função criada acima, fazendo-a retornar todos os valores do último
 array criado.
 */
-// ?
+myFunction2 (myArray, 0);
+myFunction2 (myArray, 1);
+myFunction2 (myArray, 2);
+myFunction2 (myArray, 3);
+myFunction2 (myArray, 4);
 
 /*
 Crie uma função chamada `book`, que recebe um parâmetro, que será o nome do
@@ -49,30 +55,52 @@ propriedades:
 - Se o parâmetro não for passado, a função deve retornar o objeto com todos
 os livros.
 */
-// ?
+function book (bookName) {
+  var allbooks = {
+    'Segredos do Ninja Javascript' : {
+        quantidadePaginas: 488,
+        autor: 'John Resing',
+        editora: 'Novatec'
+        },
+    'Introdução ao HTML5' : {
+        quantidadePaginas: 220,
+        autor: 'Erick A. Meyer',
+        editora: 'Alta Books'
+        },
+    'Smashing CSS' : {
+        quantidadePaginas: 283,
+        autor: 'Bruce Lawson',
+        editora: 'Bookman'
+        }
+  };
+  if (!bookName) {
+    return allBooks;
+  }
+  return allBooks [bookName];
+}
 
 /*
 Usando a função criada acima, imprima o objeto com todos os livros.
 */
-// ?
+book ()
 
 /*
 Ainda com a função acima, imprima a quantidade de páginas de um livro qualquer,
-usando a frase:
+usando a frase: 
 "O livro [NOME_DO_LIVRO] tem [X] páginas!"
 */
-// ?
+'O livro Introdução ao HTML5 tem ' + book('Introdução ao HTML5').quantidadePaginas + ' páginas!'; 
 
 /*
 Ainda com a função acima, imprima o nome do autor de um livro qualquer, usando
 a frase:
 "O autor do livro [NOME_DO_LIVRO] é [AUTOR]."
 */
-// ?
+'O autor do livro Introdução ao HTML5 é ' + book('Introdução ao HTML5').autor + '!';
 
 /*
 Ainda com a função acima, imprima o nome da editora de um livro qualquer, usando
 a frase:
 "O livro [NOME_DO_LIVRO] foi publicado pela editora [NOME_DA_EDITORA]."
 */
-// ?
+'O livro Introdução ao HTML5 foi publicado pela editora ' + book('Introdução ao HTML5').editora+ '!';
