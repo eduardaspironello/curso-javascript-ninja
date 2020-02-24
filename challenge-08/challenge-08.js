@@ -39,7 +39,7 @@ Usando a variável criada acima, mostre no console o nome e o retorno da funçã
 atribuída a ela, com a seguinte frase:
 "A função [NOME DA FUNÇÃO] retorna [RETORNO DA FUNÇÃO]."
 */
-console.log ('A função ' + varShowName.name + ' retorna ' + varShowName () '.')
+console.log ('A função ' + varShowName.name + ' retorna ' + varShowName () + '.')
 
 /*
 Crie uma função literal chamada `calculator`, que funcione assim:
@@ -53,28 +53,58 @@ vai efetuar. Será uma string com os valores `+`, `-`, `*`, `/` ou `%`;
   - Se o operador não for válido, retornar a frase:
   "Operação inválida."
 */
-// ?
+function calculator (operador) {
+    return function (numero1, numero2) {
+var resultado
+    switch (operador) {
+        case '+':
+var resultado = numero1 + numero2;
+break;
+        case '-':
+var resultado = numero1 - numero2;
+break;
+        case '*':
+var resultado = numero1 * numero2;
+break;
+        case '/':
+var resultado = numero1 / numero2;
+break;
+        case '%':
+var resultado = numero1 % numero2;
+break;
+        default:
+return ('Operação inválida');
+    };
+return ('O resultado da operação: ' + numero1 + ' ' + operador + ' ' + numero2 + ' = ' + resultado + '.');
+    };
+};
 
 /*
 Declare uma variável chamada `sum`, que receberá a função acima, passando como
 parâmetro o operador de soma.
 */
-// ?
+var sum = calculator ('+');
 
 /*
 Agora `sum` é uma função. Mostre no console a soma de dois números, usando ela.
 */
-// ?
+sum (3,4) //"O resultado da operação: 3 + 4 = 7."
 
 /*
 Agora, declare algumas variáveis com os nomes `subtraction`, `multiplication`,
 `division` e `mod`, e atribua a elas a função `calculator`, passando o operador
 correto por parâmetro para cada uma delas.
 */
-// ?
+var subtraction = calculator ('-');
+var multiplication = calculator ('*');
+var division = calculator ('/');
+var mod = calculator ('%');
 
 /*
 Faça uma operação com cada uma das funções criadas acima, mostrando o resultado
 no console.
 */
-// ?
+subtraction (45, 22) // "O resultado da operação: 45 - 22 = 23."
+multiplication (21, 3) // "O resultado da operação: 21 * 3 = 63."
+division (50,2) // "O resultado da operação: 50 / 2 = 25."
+mod (15,6) // "O resultado da operação: 15 % 6 = 3."
