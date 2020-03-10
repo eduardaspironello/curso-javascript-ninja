@@ -25,11 +25,11 @@
   função receberá dois parâmetros e retornará a operação referente à sua
   propriedade, usando os valores passados por parâmetro.
   */
-  var operation = { '+': function (n1, n2) { return n1 + n2},
-                    '-': function (nu1, nu2) {return nu1 - nu2},
-                    '*': function (num1, num2) {return num1 * num2},
-                    '/': function (nume1, nume2) {return nume1 / nume2},
-                    '%': function (numer1, numer2) {return numer1 % numer2}};
+  var operation = { '+': function (n1, n2) { return n1 + n2;},
+                    '-': function (nu1, nu2) {return nu1 - nu2;},
+                    '*': function (num1, num2) {return num1 * num2;},
+                    '/': function (nume1, nume2) {return nume1 / nume2;},
+                    '%': function (numer1, numer2) {return numer1 % numer2;}};
 
   /*
   Crie uma função chamada `isOperatorValid`, que receberá um operador por
