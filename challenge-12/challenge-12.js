@@ -92,7 +92,11 @@
   no formato abaixo:
       "[PROPRIEDADE]: [VALOR]"
   */
-  // ?
+  for ( var contador = 0; contador < books.length; contador++){
+    for (var prop in books [contador]){
+      console.log (prop + ': ' + books[contador][prop]);
+    }
+  }
 
   /*
   Crie um array chamado `myName`. Cada item desse array deve ser uma letra do
