@@ -47,7 +47,7 @@
   Mostre o resultado no console.
   */
   console.log( '\nOperation:' );
-  var operation = justMod2Or3.reduce (function (acumulado, atual, index, array) {
+  var operation = justMod2Or3.reduce (function (acumulado, atual) {
     return (acumulado + 1) * atual;
   },0);
   console.log (operation);
@@ -72,7 +72,7 @@
   falada, como se você estivesse falando em código xD
   */
   console.log( '\nSeu nome na língua do "P":' );
-  var nameP = name.reduce (function (acumulado, atual, index, array){
+  var nameP = name.reduce (function (acumulado, atual){
     return acumulado + 'P' + atual;
   }, '');
   console.log (nameP);
@@ -86,6 +86,9 @@
     return acumulado + atual;
   });
   console.log (inversedName);
+  
+  //ou
+  console.log ( nome.reverse().join('') );
 
   /*
   Mostre no console o array `numberObjects`.
@@ -103,23 +106,53 @@
   o que acontece ;)
   */
   console.log( '\nExiste um { number: 2 } em numberObjects?' );
-  var number2 = numberObjects.some (function (item){
+  var number2Exist = numberObjects.some (function (item){
   return item.number === 2;
   });
-   console.log (number2 == true ? ' Existe um objeto { number: 2 } em numberObjects!' : 
+   console.log (number2Exist === true ? ' Existe um objeto { number: 2 } em numberObjects!' : 
                 'Não existe um objeto { number: 2 } em numberObjects :(')
-
+  
+  //ou
+  // Esse código retorna que Não existe!!!! Porque é como se eu estaria
+  // criando um novo objeto e verificando por esse objeto novo!!
+  
+  if (numberObjects.indexOf ({number: 2}) > -1){
+    console.log ('Existe um objeto { number: 2 } em numberObjects!');
+  }
+  else {
+    console.log ('Não existe um objeto { number: 2 } em numberObjects :(');
+  
+  // e como esse exemplo acima retornaria que existe o objeto {number: 2}?? Assim,
+    
+  var obj = numberObjects [1]; //só que aqui eu preciso saber em qual índice vai esta o {number: 2} 
+  if (numberObjects.indexOf (obj) > -1){
+    console.log ('Existe um objeto { number: 2 } em numberObjects!');
+  }
+  else {
+    console.log ('Não existe um objeto { number: 2 } em numberObjects :(');
+    
   /*
   Fazendo o mesmo do exercício acima, mas começando a buscar do último índice,
   será que obtemos um resultado diferente? Faça a busca a partir do índice 2.
   */
   console.log( '\nE buscando a partir do último índice, o { number: 2 } existe?' );
-  // ?
-
+  if (numberObjects.lastIndexOf ({number: 2}, 2) > -1){
+    console.log ('Existe um objeto { number: 2 } em numberObjects!');
+  }
+  else {
+    console.log ('Não existe um objeto { number: 2 } em numberObjects :(');
+  // Aqui continua retornando que Não Existe!!
+    
   /*
   Verifique se `justMod2Or3` é um array. Se for, mostre-o no console, no
   formato de String.
   */
   console.log( '\njustMod2Or3 é um array? Se for, a representação dele em String é:' );
-  // ?
+  console.log (Array.isArray (justMod2Or3)?  justMod2Or3.toString() :'false');
+    
+  //ou, pelo Daciuk
+    
+    if (Array.isArray (justMod2Or3)) {
+      console.log (justMod2Or3.toString());
+      
 })();
