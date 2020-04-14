@@ -21,7 +21,21 @@ as seguintes características:
   adicionados à idade original (age). Esse método deverá retornar o objeto
   que será instanciado.
 */
-// ?
+function Person (name, lastName, age){
+  this.name = name;
+  this.lastName = lastName;
+  this.age = age;
+  this.getFullName = function (){
+    return name + ' ' + lastName;
+  }
+  this.getAge = function () {
+    return age;
+  }
+  this.addAge = function (x){
+    this.age = this.age + x;
+  }
+}
+
 
 /*
 Crie 3 novos objetos usando o construtor acima. Os objetos serão novas
@@ -29,21 +43,29 @@ pessoas. As variáveis deverão ser o primeiro nome da pessoa. Passe os
 parâmetros corretamente para o construtor para criar as novas pessoas.
 Mostre as 3 novas pessoas criadas no console (Um console.log por pessoa).
 */
-console.log( 'Novas pessoas criadas à partir de Person:' );
-// ?
+var person1 = new Person ('Eduarda', 'Spironello', 24);
+console.log (person1);
+var person2 = new Person ('Felippe', 'Puhle', 31);
+console.log (person2);
+var person3 = new Person ('Vanessa', 'Sauthier', 21);
+console.log (person3);
+console.log( 'Novas pessoas criadas a partir de Person:' );
+console.log ( person1.name + ', ' + person2.name + ' e ' + person3.name + '.' );
 
 /*
 Mostre no console o nome completo de cada pessoa.
 */
 console.log( '\nNomes das pessoas:' );
-// ?
+console.log (person1.getFullName() + ', ' + person2.getFullName() + ' e ' + person3.getFullName() + '.' );
 
 /*
 Mostre no console as idades de cada pessoa, com a frase:
 - "[NOME COMPLETO] tem [IDADE] anos."
 */
 console.log( '\nIdade das pessoas:' );
-// ?
+console.log (person1.getFullName() + ' tem ' + person1.age + ' anos.');
+console.log (person2.getFullName() + ' tem ' + person2.age + ' anos.');
+console.log (person3.getFullName() + ' tem ' + person3.age + ' anos.');
 
 /*
 Adicione alguns anos à cada pessoa, e mostre no console a nova idade de
@@ -51,4 +73,9 @@ cada um. A frase deverá ser no formato:
 - "[NOME COMPLETO] agora tem [NOVA IDADE] anos."
 */
 console.log( '\nNova idade das pessoas:' );
-// ?
+person1.addAge(11);
+person2.addAge(4);
+person3.addAge(14);
+console.log (person1.getFullName() + ' tem ' + person1.age + ' anos.');
+console.log (person2.getFullName() + ' tem ' + person2.age + ' anos.');
+console.log (person3.getFullName() + ' tem ' + person3.age + ' anos.');
