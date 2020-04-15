@@ -25,7 +25,6 @@ function Person (name, lastName, age){
   this.name = name;
   this.lastName = lastName;
   this.age = age;
-<<<<<<< HEAD
   this.getFullName = function (){
     return this.name + ' ' + this.lastName;
   }
@@ -35,16 +34,6 @@ function Person (name, lastName, age){
   this.addAge = function (){
     this.age = this.age + arguments[0];
     return this;
-=======
-  this.getFullName = function getFullName(){
-    return name + ' ' + lastName;
-  }
-  this.getAge = function getAge() {
-    return age;
-  }
-  this.addAge = function aaddAge(x){
-    this.age = this.age + x;
->>>>>>> 130429c75776a3f58578aabe1845480caab94ad9
   }
 }
 
