@@ -26,13 +26,14 @@ function Person (name, lastName, age){
   this.lastName = lastName;
   this.age = age;
   this.getFullName = function (){
-    return name + ' ' + lastName;
+    return this.name + ' ' + this.lastName;
   }
   this.getAge = function () {
-    return age;
+    return this.age;
   }
-  this.addAge = function (x){
-    this.age = this.age + x;
+  this.addAge = function (){
+    this.age = this.age + arguments[0];
+    return this;
   }
 }
 
@@ -76,6 +77,6 @@ console.log( '\nNova idade das pessoas:' );
 person1.addAge(11);
 person2.addAge(4);
 person3.addAge(14);
-console.log (person1.getFullName() + ' tem ' + person1.age + ' anos.');
-console.log (person2.getFullName() + ' tem ' + person2.age + ' anos.');
-console.log (person3.getFullName() + ' tem ' + person3.age + ' anos.');
+console.log (person1.getFullName() + ' agora tem ' + person1.age + ' anos.');
+console.log (person2.getFullName() + ' agora tem ' + person2.age + ' anos.');
+console.log (person3.getFullName() + ' agora tem ' + person3.age + ' anos.');
