@@ -25,13 +25,13 @@ function Person (name, lastName, age){
   this.name = name;
   this.lastName = lastName;
   this.age = age;
-  this.getFullName = function (){
+  this.getFullName = function getFullName(){
     return name + ' ' + lastName;
   }
-  this.getAge = function () {
+  this.getAge = function getAge() {
     return age;
   }
-  this.addAge = function (x){
+  this.addAge = function aaddAge(x){
     this.age = this.age + x;
   }
 }
