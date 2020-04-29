@@ -34,8 +34,12 @@
     console.log para cada formato.
     */
     console.log( '\nNome convertido à partir de um slug:' );
-    // ?
-
+    var fullName  = 'eduarda-spironello-puhle';
+    var newFullName = fullName.split ('-').map (function (item){
+        return item.charAt(0).toUpperCase() + item.slice (1);
+    })
+    console.log (newFullName.join(' '));
+    
     /*
     - Crie um array com 5 nomes. Reduza esses nomes a uma única string, separando
     cada nome por vírgula. Entre o penúltimo e o último nome, o separador deve
@@ -46,21 +50,48 @@
     5 nomes foi somente uma sugestão ;)
     */
     console.log( '\nMeus amigos:' );
-    // ?
+    var friends = ['Danimar', 'Vanessa', 'Raiane', 'Pedro', 'Daiane', 'Camila'];
+        //var ultimoNome = arr.pop ();
+        //console.log (arr.join (', ') + ' e ' + ultimoNome + '.');
+        //porém deste jeito modifica o array original
+
+    var amigos = friends.reduce (function (acumulado, atual, indice){
+        if ( indice === 0){
+            return atual;
+        };
+        if (indice === friends.length-1){
+            return acumulado + ' e ' + atual;
+        };
+        return acumulado + ', ' + atual;
+    }, '');
+    console.log (amigos);
+
+    /*
+    Resolução Daciuk:
+    var frase = friends.reduce (function (acumulado, atual, indice){
+        var separador = friends.length - 1 === indice ? ' e ': ', ';
+        return acumulado + separador + atual;
+    }).concat (' são meus amigos.');
+    console.log (frase);
+    */
 
     /*
     Usando o replace(), faça a string "Roberto" virar "Roberta".
     Mostre o resultado no console.
     */
     console.log( '\nEra "Roberto", agora é:' );
-    // ?
+    var name = 'Roberto';
+    console.log (name.replace ('to', 'ta'));
+    
 
     /*
     Mostre no console a parte "nando" da string "Fernando". Use o método que
     faz a busca do final para o início da string.
     */
     console.log( '\nParte de uma string:' );
-    // ?
+    var nando = 'Fernando';
+    console.log (nando.substring (3));
+
 
     /*
     Declare uma variável chamada `myName`, que receba o seu primeiro nome,
@@ -72,5 +103,35 @@
     Ex.: Nomes que deveriam funcionar: "Fernando", "RoBertO", "gabriEla", etc.
     */
     console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
-    // ?    
+    var myName = 'Eduarda';
+
+    /* Resolução Felippe
+    var intercalando = 
+        myName
+            .split('')
+            .map(function(letter, index) {
+                if (index % 2 === 0) {
+                    return letter.toUpperCase()
+                }
+                return letter.toLowerCase()
+            })
+            .join('')
+            console.log (intercalando) */
+
+    var arrMyName = myName.split('').reduce (function (acumulado, atual, indice){
+        if (indice % 2 === 0 ){
+            return acumulado + atual.toUpperCase();
+        };
+        return acumulado + atual.toLowerCase();
+    },'');
+    console.log (arrMyName);
+
+    /* Resolução Daciuk
+    var myNewName  = [];
+    for (var i = 0; i < myName.length; i++) {
+        myNewName.push (i % 2 === 0 ? myName [i].toLowerCase() : myName[i].toUpperCase());
+    }
+    console.log (myNewName.join(''));
+    */
+    
 })();
