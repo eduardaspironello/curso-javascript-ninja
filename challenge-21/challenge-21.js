@@ -14,4 +14,56 @@ Utilize o atributo data-js para nomear o campo e os botões. Você pode
 usar o nome que achar melhor, desde que ele seja semântico, ou seja, o nome
 dado ao elemento HTML deve definir o que o elemento é ou o que ele faz.
 */
-// ?
+(function (win, doc){
+    'use strict';
+
+    var counter = 0;
+    var $inputTempo = doc.querySelector ('[data-js="campoTempo"]');
+    var $buttonStart = doc.querySelector ('[data-js="buttonStart"]');
+    var $buttonStop = doc.querySelector ('[data-js="buttonStop"]');
+    var $buttonReset = doc.querySelector ('[data-js="buttonReset"]');
+    var temporizador;
+
+    $buttonStart.addEventListener ('click', cronometro, false);
+
+    function cronometro (){
+        counter++
+        console.log (counter);
+        $inputTempo.value = counter;
+        temporizador = setTimeout (cronometro, 1000);
+        };
+
+    $buttonStop.addEventListener ('click', function () {
+        clearTimeout (temporizador);
+    }, false);
+
+    $buttonReset.addEventListener ('click', function (){
+        $inputTempo.value = 0;
+    });
+
+})(window, document);
+
+
+/* CÓDIGO DO DACIUK
+
+    var $inputTempo = doc.querySelector ('[data-js="campoTempo"]');
+    var $buttonStart = doc.querySelector ('[data-js="buttonStart"]');
+    var $buttonStop = doc.querySelector ('[data-js="buttonStop"]');
+    var $buttonReset = doc.querySelector ('[data-js="buttonReset"]');
+    var interval;
+
+    $buttonStart.addEventListener ('click', startTime, false);
+    function startTime () {
+        $inputTempo.value = +$inputTempo.value +1;
+        interval = setTimeout (startTimer, 1000);
+    }
+
+    function stopTime (){
+        clearTimeout (interval);
+    }
+
+    function resetTimer () {
+        $inputTempo.value = 0;
+        stopTimer ();
+    }
+*/
