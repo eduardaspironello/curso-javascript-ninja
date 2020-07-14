@@ -1,3 +1,5 @@
+(function (win, doc){
+'use strict';
 /*
 Vamos desenvolver mais um projeto. A ideia é fazer uma mini-calculadora.
 As regras são:
@@ -23,3 +25,29 @@ multiplicação (x), então no input deve aparecer "1+2x".
 input;
 - Ao pressionar o botão "CE", o input deve ficar zerado.
 */
+var $visor = document.querySelector ('[data-js="visor"]');
+var $buttonsNumbers = document.querySelectorAll ('[data-js="button-number"]');
+console.log ($buttonsNumbers);
+
+/*function lippeEhLegal(numeroPressionado) {
+  console.log($calculator.value, numeroPressionado)
+  $calculator.value =  $calculator.value === "0" ? numeroPressionado : $calculator.value + numeroPressionado
+}
+
+var $button = document.querySelector ('#number1')
+  $button.addEventListener ('click', function (event) {
+    event.preventDefault ();
+    lippeEhLegal('0')
+  })
+
+  var operation = { '+': function (n1, n2) { return n1 + n2;},
+                    '-': function (nu1, nu2) {return nu1 - nu2;},
+                    '*': function (num1, num2) {return num1 * num2;},
+                    '/': function (nume1, nume2) {return nume1 / nume2;},
+                    '%': function (numer1, numer2) {return numer1 % numer2;}};
+
+  function calculator (operator) {
+    return operation [operator] (x, y)
+  };
+*/
+})(window, document);
