@@ -27,27 +27,73 @@ input;
 */
 var $visor = document.querySelector ('[data-js="visor"]');
 var $buttonsNumbers = document.querySelectorAll ('[data-js="button-number"]');
-console.log ($buttonsNumbers);
+var $buttonsOperations = document.querySelectorAll ('[data-js="button-operation"]');
+var $buttonCE = document.querySelector ('[data-js="button-ce"]');
+var $buttonEqual = document.querySelector ('[data-js="button-equal"]');
 
-/*function lippeEhLegal(numeroPressionado) {
-  console.log($calculator.value, numeroPressionado)
-  $calculator.value =  $calculator.value === "0" ? numeroPressionado : $calculator.value + numeroPressionado
-}
+Array.prototype.forEach.call ($buttonsNumbers, function (button){
+  button.addEventListener ('click', handleClickNumber, false);
+});
 
-var $button = document.querySelector ('#number1')
-  $button.addEventListener ('click', function (event) {
-    event.preventDefault ();
-    lippeEhLegal('0')
+Array.prototype.forEach.call ($buttonsOperations, function (button){
+  button.addEventListener ('click', handleClickOperation, false)
+});
+
+$buttonCE.addEventListener ('click', handleClickCE , false);
+
+$buttonEqual.addEventListener ('click', handleClickEqual, false);
+
+function handleClickNumber (event){
+  event.preventDefault ();
+  $visor.value += this.value;
+};
+
+function handleClickOperation (event){
+  event.preventDefault ();
+  $visor.value = removeUltimoItemSeEleForUmOperador ($visor.value);
+  $visor.value += this.value;
+};
+
+function handleClickCE (event){
+  event.preventDefault ();
+  $visor.value = 0;
+};
+
+function handleClickEqual (event) {
+  event.preventDefault ();
+  $visor.value = removeUltimoItemSeEleForUmOperador($visor.value);
+  var allValues = $visor.value.match (/\d+[+x÷-]?/g);
+  $visor.value = allValues.reduce (function (accumulated, actual){
+    var firstValue = accumulated.slice (0, -1);
+    var operator = accumulated.split ('').pop();
+    var lastValue = removeUltimoItemSeEleForUmOperador (actual);
+    var lastOperator = isLastItemAnOperation (actual) ? actual.split ('').pop () : '';
+    switch (operator){
+      case '+':
+        return ( Number(firstValue) + Number(lastValue)) + lastOperator;
+      case '-':
+        return ( Number(firstValue) - Number(lastValue)) + lastOperator;
+      case 'x':
+        return ( Number(firstValue) * Number(lastValue)) + lastOperator;
+      case '÷':
+        return ( Number(firstValue) / Number(lastValue)) + lastOperator;
+    }
   })
+};
 
-  var operation = { '+': function (n1, n2) { return n1 + n2;},
-                    '-': function (nu1, nu2) {return nu1 - nu2;},
-                    '*': function (num1, num2) {return num1 * num2;},
-                    '/': function (nume1, nume2) {return nume1 / nume2;},
-                    '%': function (numer1, numer2) {return numer1 % numer2;}};
-
-  function calculator (operator) {
-    return operation [operator] (x, y)
+function removeUltimoItemSeEleForUmOperador (number) {
+  if (isLastItemAnOperation(number)){
+    return number.slice (0, -1);
   };
-*/
+  return number;
+};
+
+function isLastItemAnOperation (number) {
+  var operations = ['+','-','x','÷'];
+  var lastItem = number.split ('').pop();
+  return operations.some (function (operator){
+    return operator === lastItem;
+  });
+};
+
 })(window, document);
